@@ -1,0 +1,45 @@
+.actionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-block: 10px;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  padding: 10px 10px;
+  color: #f2f2f2;
+  border-radius: 5px;
+}
+.sort {
+  background-color: #29183c;
+}
+.reset {
+  background-color: #ff0000;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table td,
+.table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}
