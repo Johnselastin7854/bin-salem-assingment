@@ -77,11 +77,20 @@ const Table = () => {
   });
 
   if (isLoading) {
-    return <p>Loading Table Data...</p>;
+    return (
+      <p className={styles.loader}>
+        Fetching Table Data
+        <img src="/loader.gif" alt="" />
+      </p>
+    );
   }
 
   if (error) {
-    return <p>Error fetching data: {error.message}</p>;
+    return (
+      <p style={{ textAlign: "center" }}>
+        Error fetching data: {error.message}
+      </p>
+    );
   }
 
   const handleResetTable = () => {
@@ -116,35 +125,39 @@ const Table = () => {
         </button>
       </div>
 
-      <table className={styles.table}>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {filteredData?.length === 0 ? (
+        <p style={{ textAlign: "center" }}> No Data Found</p>
+      ) : (
+        <table className={styles.table}>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
