@@ -1,3 +1,7 @@
+.container {
+  max-width: 1024px;
+  margin-inline: 1.5rem;
+}
 .actionContainer {
   display: flex;
   flex-direction: column;
@@ -7,6 +11,7 @@
 .actions {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 .button {
   padding: 10px 10px;
@@ -52,4 +57,26 @@
   text-align: left;
   background-color: #04aa6d;
   color: white;
+}
+
+@media (max-width: 500px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .input,
+  .sort {
+    width: 100%;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .table th,
+  .table td {
+    text-align: left;
+  }
 }

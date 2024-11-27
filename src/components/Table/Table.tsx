@@ -4,18 +4,19 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import useFetch from "../hooks/useFetch";
-import { User } from "../types";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./table.module.css";
+import { User } from "../../types";
+import useFetch from "../../hooks/useFetch";
 
 const Table = () => {
-  const { data, error, isLoading } = useFetch(
-    "https://jsonplaceholder.typicode.com/users"
-  );
   const [sortOrder, setSortOrder] = useState("asc");
   const [filteredData, setFilteredData] = useState<User[]>([]);
   const [filterText, setFilterText] = useState("");
+
+  const { data, error, isLoading } = useFetch(
+    "https://jsonplaceholder.typicode.com/users"
+  );
 
   useEffect(() => {
     if (data.length > 0) {
@@ -41,7 +42,6 @@ const Table = () => {
     const filtered = data.filter((user) =>
       user.address.city.toLowerCase().includes(text)
     );
-    console.log(filtered);
     setFilteredData(filtered);
   };
 
@@ -75,6 +75,7 @@ const Table = () => {
     getCoreRowModel: getCoreRowModel(),
     enableSorting: false,
   });
+
   if (isLoading) {
     return <p>Loading Table Data...</p>;
   }
@@ -90,7 +91,7 @@ const Table = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.actionContainer}>
         <div className={styles.actions}>
           <button
@@ -144,7 +145,7 @@ const Table = () => {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

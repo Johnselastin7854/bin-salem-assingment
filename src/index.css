@@ -11,10 +11,6 @@ body {
   background-color: #fff;
   color: #000;
   font-family: "Montserrat", serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
 }
 button {
   border: none;
@@ -22,4 +18,19 @@ button {
   font-family: inherit;
   background: none;
   cursor: pointer;
+}
+h1 {
+  text-align: center;
+  margin-block: 20px;
+  font-size: 32px;
+  color: #04aa6d;
+}
+
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
 }
