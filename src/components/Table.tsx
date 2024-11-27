@@ -83,6 +83,12 @@ const Table = () => {
     return <p>Error fetching data: {error.message}</p>;
   }
 
+  const handleResetTable = () => {
+    setFilteredData(data);
+    setSortOrder("asc");
+    setFilterText("");
+  };
+
   return (
     <>
       <div className={styles.actionContainer}>
@@ -98,9 +104,15 @@ const Table = () => {
             placeholder="Filter by City"
             value={filterText}
             onChange={filterByCity}
+            className={styles.input}
           />
         </div>
-        <button className={`${styles.button} ${styles.reset}`}>Reset</button>
+        <button
+          className={`${styles.button} ${styles.reset}`}
+          onClick={handleResetTable}
+        >
+          Reset 🔄️
+        </button>
       </div>
 
       <table className={styles.table}>

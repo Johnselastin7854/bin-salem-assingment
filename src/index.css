@@ -21,4 +21,5 @@ button {
   outline: none;
   font-family: inherit;
   background: none;
+  cursor: pointer;
 }

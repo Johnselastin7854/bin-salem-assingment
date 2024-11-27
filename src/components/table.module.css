@@ -18,6 +18,16 @@
 }
 .reset {
   background-color: #ff0000;
+  font-size: 20px;
+  font-weight: 500;
+}
+.input {
+  padding: 10px;
+  font-family: inherit;
+  background: none;
+  border-radius: 5px;
+  border: 2px solid #04aa6d;
+  outline: none;
 }
 .table {
   width: 100%;
